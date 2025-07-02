@@ -1,0 +1,43 @@
+name: MWeb Development
+start_script:
+  - python -m pip install --upgrade pip
+  - python --version
+  - git pull
+
+dependencies:
+  - name: Source Development
+    dir: dependencies
+    status: active
+    clone:
+      branch: dev
+      status: active
+      source: code
+      script:
+        - pip install -e .
+      repo:
+        - url: https://github.com/banglafighter/mweb.git
+        - url: https://github.com/banglafighter/mweb-orm.git
+        - url: https://github.com/banglafighter/mweb-cli.git
+        - url: https://github.com/banglafighter/mweb-auth.git
+        - url: https://github.com/banglafighter/mweb-crud.git
+        - url: https://github.com/banglafighter/mw-common.git
+        - url: https://github.com/banglafighter/mw-file-content.git
+        - url: https://github.com/banglafighter/mweb-ssr.git
+        - url: https://github.com/banglafighter/mweb-builtin.git
+        - url: https://github.com/banglafighter/mweb-http.git
+        - url: https://github.com/banglafighter/mweb-ui.git
+        - url: https://github.com/banglafighter/mweb-react.git
+
+  - name: Application
+    dir: application
+    status: active
+    module:
+      status: active
+      source: code
+      script:
+        - pip install -e .
+      subdir:
+        - name: pweb-basic
+
+end_script:
+  - pip install -e .

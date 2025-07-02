@@ -29,6 +29,14 @@ This project is helps to source development of the MWeb Framework.
 
 <br/>
 
+* **Package Name** : `mweb-auth`
+* **Actual Name** : MWeb Authentication
+* **Description** : MWeb authentication system, which allows managing application basic level authentication, but it can be extended.
+* **Status** : Started
+* **GitHub URL** : https://github.com/banglafighter/mweb-auth
+
+<br/>
+
 * **Package Name** : `mweb-crud`
 * **Actual Name** : MWeb Create, Read, Update, Delete
 * **Description** : Helps to easily perform Create, Read, Update, & Delete operations for REST-API and server-side rendering data processing, and can generate OpenAPI.

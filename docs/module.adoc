@@ -1,0 +1,3 @@
+
+* Create a class called `<app_name>_module.py`
+* Must need to extend `MWebModule` and implement the methods

@@ -37,7 +37,7 @@ dependencies:
       script:
         - pip install -e .
       subdir:
-        - name: pweb-basic
+        - name: rest-app
 
 end_script:
   - pip install -e .

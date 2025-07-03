@@ -4,6 +4,7 @@ from mweb.engine.mweb_config import MWebConfig
 from mweb.engine.mweb_connector import MWebModule
 from mweb.engine.mweb_data import MWebModuleDetails
 from mweb.engine.mweb_hook import MWebHook
+from rest_app.controller.rest_api_controller import rest_api_controller
 
 
 class RestAppModule(MWebModule):
@@ -13,12 +14,15 @@ class RestAppModule(MWebModule):
 
     def initialize(self, mweb_app: MWebBase, config: MWebConfig, hook: MWebHook, **kwargs):
         Console.log("Initializing MWeb Module")
+        Console.log(__name__)
 
     def register_model(self, mweb_db) -> list:
         Console.log("Registering MWeb Model")
+        pass
 
     def register_controller(self, mweb_app: MWebBase):
         Console.log("Registering MWeb Controller")
+        mweb_app.add_controller(rest_api_controller)
 
     def run_on_start(self, mweb_app: MWebBase, config: MWebConfig):
         Console.log("Running MWeb Module")

@@ -1,4 +1,4 @@
-from mweb.engine.mweb_connector import MWebAppDefinition
+from mweb import MWebAppDefinition
 from rest_app.rest_app_module import RestAppModule
 
 

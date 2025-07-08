@@ -5,6 +5,9 @@ from mweb.engine.mweb_connector import MWebModule
 from mweb.engine.mweb_data import MWebModuleDetails
 from mweb.engine.mweb_hook import MWebHook
 from rest_app.controller.rest_api_controller import rest_api_controller
+from rest_app.model.author import Author
+from rest_app.model.book import Book
+from rest_app.model.operator import Operator
 
 
 class RestAppModule(MWebModule):
@@ -18,7 +21,11 @@ class RestAppModule(MWebModule):
 
     def register_model(self, mweb_db) -> list:
         Console.log("Registering MWeb Model")
-        pass
+        return [
+            Author,
+            Operator,
+            Book
+        ]
 
     def register_controller(self, mweb_app: MWebBase):
         Console.log("Registering MWeb Controller")

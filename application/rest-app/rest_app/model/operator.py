@@ -1,4 +1,5 @@
-from mweb_orm import MWebModel, mweb_orm
+from mweb_orm import MWebModel
+from mweb_orm.orm import mweb_orm
 
 
 class Operator(MWebModel):

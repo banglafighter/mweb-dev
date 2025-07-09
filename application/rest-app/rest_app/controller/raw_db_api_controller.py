@@ -1,3 +1,4 @@
+from mw_common.mw_console_log import Console
 from mweb import Controller
 from mweb_crud import mweb_paginate_endpoint, mweb_upload_endpoint, mweb_endpoint
 from rest_app.dto.person_dto import PersonCreateDTO, PersonUploadDTO, PersonDetailsDTO
@@ -11,14 +12,33 @@ raw_db_api_controller = Controller(
 
 
 @raw_db_api_controller.route("/save", methods=['POST', 'GET'])
-@mweb_endpoint(request_obj=PersonCreateDTO, mweb_message_response=True)
+@mweb_endpoint(mweb_message_response=True)
 async def save():
-    auther = await Author(name="Touhid Mia").save()
-    return "Response"
+    author = Author(name="Touhid Mia")
+    if author.is_saved():
+        Console.log("Before Saved")
+
+    auther = await author.save()
+    if author.is_saved():
+        return "Saved successfully"
+
+    return "Unable to save successfully"
+
+
+@raw_db_api_controller.route("/save-all", methods=['POST', 'GET'])
+@mweb_endpoint(mweb_message_response=True)
+async def save_all():
+    authos = []
+    for index in range(0, 20):
+        author = Author(name=f"Author Name #{index}")
+        authos.append(author)
+    await Author.save_all(authos)
+
+    return "Saved all"
 
 
 @raw_db_api_controller.route("/details/<int:model_id>", methods=['GET'])
-@mweb_endpoint(request_obj=PersonCreateDTO, mweb_message_response=True)
+@mweb_endpoint(mweb_message_response=True)
 async def details(model_id: int):
     pass
 

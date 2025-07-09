@@ -37,6 +37,15 @@ async def save_all():
     return "Saved all"
 
 
+@raw_db_api_controller.route("/read-all", methods=['POST', 'GET'])
+@mweb_endpoint(mweb_message_response=True)
+async def read_all():
+    result = await Author.query.read_all()
+    print(result)
+    result2 = await Author.select(Author.name).read_all()
+    return "Saved all"
+
+
 @raw_db_api_controller.route("/details/<int:model_id>", methods=['GET'])
 @mweb_endpoint(mweb_message_response=True)
 async def details(model_id: int):
@@ -61,7 +70,3 @@ async def upload():
     pass
 
 
-@raw_db_api_controller.route("/read-all", methods=['GET'])
-@mweb_paginate_endpoint(response_obj=PersonDetailsDTO)
-async def read_all():
-    return []

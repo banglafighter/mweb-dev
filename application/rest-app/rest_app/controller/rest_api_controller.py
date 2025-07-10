@@ -17,7 +17,7 @@ request_context = RequestContext()
 async def create():
     json_body = await request_context.get_json_body()
     validator = PersonDetailsDTO()
-    data = await request_context.get_data(validator=validator)
+    data = await request_context.get_data(validator=validator, clean=True)
     print(json_body)
     return data
 

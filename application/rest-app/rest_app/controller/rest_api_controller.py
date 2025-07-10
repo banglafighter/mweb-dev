@@ -1,5 +1,6 @@
 from mweb import Controller
 from mweb_crud import mweb_paginate_endpoint, mweb_upload_endpoint, mweb_endpoint
+from mweb_crud.crud import RequestContext
 from rest_app.dto.person_dto import PersonCreateDTO, PersonUploadDTO, PersonDetailsDTO
 
 controller_url = "/api/v1/rest"
@@ -8,11 +9,17 @@ rest_api_controller = Controller(
     url=controller_url
 )
 
+request_context = RequestContext()
+
 
 @rest_api_controller.route("/create", methods=['POST'])
 @mweb_endpoint(request_obj=PersonCreateDTO, mweb_message_response=True)
 async def create():
-    pass
+    json_body = await request_context.get_json_body()
+    validator = PersonDetailsDTO()
+    data = await request_context.get_data(validator=validator)
+    print(json_body)
+    return data
 
 
 @rest_api_controller.route("/details/<int:model_id>", methods=['GET'])

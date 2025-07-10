@@ -10,21 +10,13 @@ class PersonDetailsDTO(MWebDTO):
 
 
 class PersonCreateDTO(PersonDetailsDTO):
-    class Meta:
-        # model = Person
-        pass
+    pass
 
 
 class PersonUpdateDTO(PersonDetailsDTO):
-    class Meta:
-        model = None
-
     id = dto.Integer(required=True, error_messages={"required": "Please enter id"})
 
 
 class PersonUploadDTO(MWebDTO):
     image = dto.File(allow_none=True)
     id = dto.Integer(required=True, error_messages={"required": "Please enter id"})
-
-    class Meta:
-        model = None

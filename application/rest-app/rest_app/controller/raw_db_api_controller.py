@@ -1,7 +1,7 @@
 from mw_common.mw_console_log import Console
 from mweb import Controller
 from mweb_crud import mweb_paginate_endpoint, mweb_upload_endpoint, mweb_endpoint
-from rest_app.dto.person_dto import PersonCreateDTO, PersonUploadDTO, PersonDetailsDTO
+from rest_app.dto.person_dto import PersonCreateDTO, PersonUploadDTO
 from rest_app.model.author import Author
 from mweb_orm import and_
 

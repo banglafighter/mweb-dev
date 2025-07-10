@@ -17,8 +17,7 @@ class PersonCreateDTO(PersonDetailsDTO):
 
 class PersonUpdateDTO(PersonDetailsDTO):
     class Meta:
-        # model = Person
-        pass
+        model = None
 
     id = dto.Integer(required=True, error_messages={"required": "Please enter id"})
 
@@ -28,5 +27,4 @@ class PersonUploadDTO(MWebDTO):
     id = dto.Integer(required=True, error_messages={"required": "Please enter id"})
 
     class Meta:
-        # model = Person
-        pass
+        model = None

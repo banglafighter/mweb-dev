@@ -3,6 +3,7 @@ from mweb_crud.data_transfer.base_dto import MWebDTO
 
 
 class PersonDetailsDTO(MWebDTO):
+    name = dto.String(required=True, error_messages={"required": "Please enter name"})
     firstname = dto.String(required=True, error_messages={"required": "Please enter first name"})
     lastname = dto.String(allow_none=True)
     email = dto.Email(required=True, error_messages={"required": "Please enter email."})

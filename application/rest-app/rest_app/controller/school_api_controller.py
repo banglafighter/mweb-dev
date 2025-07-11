@@ -1,5 +1,5 @@
 from mweb import Controller
-from mweb_crud import mweb_endpoint
+from mweb_crud import mweb_endpoint, mweb_paginate_endpoint
 from rest_app.dto.school_dto import SchoolCreateDTO, SchoolDetailsDTO
 from rest_app.service.school_service import SchoolService
 
@@ -24,7 +24,19 @@ async def create_response_model():
     return await school_service.create_response_model()
 
 
-@school_api_controller.route("/details/<int:model_id>", methods=['GET'])
+@school_api_controller.route("/details/<int:record_id>", methods=['GET'])
 @mweb_endpoint(response_obj=SchoolDetailsDTO)
-async def details(model_id: int):
-    return await school_service.details(model_id=model_id)
+async def details(record_id: int):
+    return await school_service.details(record_id=record_id)
+
+
+@school_api_controller.route("/read-all", methods=['GET'])
+@mweb_paginate_endpoint(response_obj=SchoolDetailsDTO)
+async def read_all():
+    return await school_service.read_all()
+
+
+@school_api_controller.route("/delete/<int:record_id>", methods=['DELETE'])
+@mweb_endpoint()
+def delete(record_id: int):
+    return school_service.delete(record_id=record_id)

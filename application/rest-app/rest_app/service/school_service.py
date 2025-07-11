@@ -12,5 +12,12 @@ class SchoolService:
     async def create_response_model(self):
         return await self.crud_manager.create(request=SchoolCreateDTO(), response=SchoolDetailsDTO())
 
-    async def details(self, model_id: int):
-        return await self.crud_manager.details(model_id=model_id, response=SchoolDetailsDTO())
+    async def details(self, record_id: int):
+        return await self.crud_manager.details(record_id=record_id, response=SchoolDetailsDTO())
+
+    async def read_all(self):
+        search_fields: list = ["name", "email", "location"]
+        return await self.crud_manager.paginated_read_all(response=SchoolDetailsDTO(), search_fields=search_fields)
+
+    async def delete(self, record_id: int):
+        return await self.crud_manager.delete(record_id=record_id)

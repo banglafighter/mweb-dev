@@ -2,4 +2,4 @@ from mweb import MWebConfig
 
 
 class Config(MWebConfig):
-    pass
+    DB_PRINT_LOG: bool = True

@@ -1,6 +1,6 @@
 from mweb import Controller
 from mweb_crud import mweb_paginate_endpoint, mweb_upload_endpoint, mweb_endpoint
-from mweb_crud.crud import RequestContext
+from mweb_crud.crud import RequestContext, ResponseMaker
 from rest_app.dto.person_dto import PersonCreateDTO, PersonUploadDTO, PersonDetailsDTO
 from rest_app.model.author import Author
 
@@ -55,4 +55,5 @@ async def upload():
 @rest_api_controller.route("/read-all", methods=['GET'])
 @mweb_paginate_endpoint(response_obj=PersonDetailsDTO)
 async def read_all():
-    return []
+    paginated_list = await Author.query.paginate()
+    return await ResponseMaker.success_from_model(model=paginated_list, transformer=PersonDetailsDTO())

@@ -22,3 +22,9 @@ async def create():
 @mweb_endpoint(request_obj=SchoolCreateDTO, response_obj=SchoolDetailsDTO)
 async def create_response_model():
     return await school_service.create_response_model()
+
+
+@school_api_controller.route("/details/<int:model_id>", methods=['GET'])
+@mweb_endpoint(response_obj=SchoolDetailsDTO)
+async def details(model_id: int):
+    return await school_service.details(model_id=model_id)

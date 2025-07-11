@@ -11,3 +11,6 @@ class SchoolService:
 
     async def create_response_model(self):
         return await self.crud_manager.create(request=SchoolCreateDTO(), response=SchoolDetailsDTO())
+
+    async def details(self, model_id: int):
+        return await self.crud_manager.details(model_id=model_id, response=SchoolDetailsDTO())

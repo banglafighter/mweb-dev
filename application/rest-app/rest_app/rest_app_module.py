@@ -5,6 +5,7 @@ from mweb.engine.mweb_connector import MWebModule
 from mweb.engine.mweb_data import MWebModuleDetails
 from mweb.engine.mweb_hook import MWebHook
 from rest_app.controller.exception_api_controller import exception_api_controller
+from rest_app.controller.file_example_controller import file_example_api_controller
 from rest_app.controller.raw_db_api_controller import raw_db_api_controller
 from rest_app.controller.rest_api_controller import rest_api_controller
 from rest_app.controller.school_api_controller import school_api_controller
@@ -38,6 +39,7 @@ class RestAppModule(MWebModule):
         mweb_app.register_controller(rest_api_controller)
         mweb_app.register_controller(raw_db_api_controller)
         mweb_app.register_controller(exception_api_controller)
+        mweb_app.register_controller(file_example_api_controller)
 
     def run_on_start(self, mweb_app: MWebBase, config: MWebConfig):
         Console.log("Running MWeb Module")

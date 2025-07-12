@@ -22,6 +22,9 @@ class SchoolCreateDTO(SchoolDetailsDTO):
 
 
 class SchoolUpdateDTO(SchoolDetailsDTO):
+    class Meta:
+        model = School
+
     id = dto.Integer(required=True, error_messages={"required": "Please enter id"})
 
 

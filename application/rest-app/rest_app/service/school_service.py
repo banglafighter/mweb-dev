@@ -1,5 +1,5 @@
 from mweb_crud.crud import CRUDManager
-from rest_app.dto.school_dto import SchoolCreateDTO, SchoolDetailsDTO
+from rest_app.dto.school_dto import SchoolCreateDTO, SchoolDetailsDTO, SchoolUpdateDTO
 from rest_app.model.school import School
 
 
@@ -21,3 +21,6 @@ class SchoolService:
 
     async def delete(self, record_id: int):
         return await self.crud_manager.delete(record_id=record_id)
+
+    async def update(self):
+        return await self.crud_manager.update(request=SchoolUpdateDTO())

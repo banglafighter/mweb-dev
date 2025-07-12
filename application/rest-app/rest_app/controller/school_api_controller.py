@@ -1,6 +1,6 @@
 from mweb import Controller
 from mweb_crud import mweb_endpoint, mweb_paginate_endpoint
-from rest_app.dto.school_dto import SchoolCreateDTO, SchoolDetailsDTO
+from rest_app.dto.school_dto import SchoolCreateDTO, SchoolDetailsDTO, SchoolUpdateDTO
 from rest_app.service.school_service import SchoolService
 
 controller_url = "/api/v1/school"
@@ -17,6 +17,10 @@ school_service = SchoolService()
 async def create():
     return await school_service.create()
 
+@school_api_controller.route("/update", methods=['POST'])
+@mweb_endpoint(request_obj=SchoolUpdateDTO, mweb_message_response=True)
+async def update():
+    return await school_service.update()
 
 @school_api_controller.route("/create-response-model", methods=['POST'])
 @mweb_endpoint(request_obj=SchoolCreateDTO, response_obj=SchoolDetailsDTO)
